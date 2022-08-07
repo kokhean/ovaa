@@ -37,6 +37,9 @@ jobs:
           args: . --sarif --output results.sarif || true
 
       - name: TruffleHog OSS
-        uses: trufflesecurity/trufflehog@v3.7.2
-        with:
-          sarif_file: results.sarif
+              uses: trufflesecurity/trufflehog@v3.4.3
+              with:
+                path: ./
+                base: ${{ github.event.repository.default_branch }}
+                head: HEAD
+                extra_args: --debug
